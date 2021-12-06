@@ -1,6 +1,8 @@
 const fs = require('fs');
 const express = require('express');
 const path = require('path');
+const { title } = require('process');
+const { timeLog } = require('console');
 
 
 const PORT = process.env.PORT || 3000;
@@ -10,14 +12,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// `GET *` should return the `index.html` file.
-app.get('*', (req, res) => res.redirect('/index.html'));
 
 app.get('/', (req, res) =>
 res.sendFile(path.join(__dirname, '/index.html'))
 );
 
-// GET /notes` should return the `notes.html` file.
 app.get('/notes', (req, res) =>
 res.sendFile(path.join(__dirname, 'public/notes.html'))
 );
@@ -36,7 +35,7 @@ fs.readFile(path.join(__dirname,'db/db.json'), 'utf8', function(err, data){
     const entry = {
         title: inputReq.title,
         text: inputReq.text,
-        
+        id:  title.length * Math.random()
     };
     input.push(entry)
     fs.writeFile(path.join(__dirname, 'db/db.json'), JSON.stringify(input, null, 2), function(err) {
@@ -46,6 +45,9 @@ fs.readFile(path.join(__dirname,'db/db.json'), 'utf8', function(err, data){
     
 })
 )
+
+
+app.get('*', (req, res) => res.redirect('/index.html'));
 
 app.listen(PORT, function() {
     console.log(`Server is listening on PORT: http://localhost:${PORT}`);
