@@ -1,9 +1,5 @@
 # Week-11-Notetaker
 Note taker created to write and save notes. 
-- Express . 
-- Timer decreases by 10 seconds for ever incorrect answer. 
-- In this project I gained a much better grasp of how to utilize javascript to create something that is a fun user experience. 
-- Was not able to get the High Scores page to save** 
 # Installation
  - Clone github repo https://github.com/robbyhill20/Week-11-Notetaker.git
  - NPM Install
