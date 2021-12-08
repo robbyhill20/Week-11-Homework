@@ -47,7 +47,7 @@ fs.readFile(path.join(__dirname,'db/db.json'), 'utf8', function(err, data){
 )
 
 
-app.get('*', (req, res) => res.redirect('/index.html'));
+app.get('*', (req, res) => res.redirect('/public/index.html'));
 
 app.listen(PORT, function() {
     console.log(`Server is listening on PORT: http://localhost:${PORT}`);
